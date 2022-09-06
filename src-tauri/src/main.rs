@@ -20,16 +20,26 @@ fn greet(name: &str) -> String {
 #[tauri::command]
 fn save_to_db(name: &str) -> String {
     let connection = sqlite::open(get_db_file_location()).unwrap();
-     connection
-    .execute(
-        format!("
+    connection
+        .execute(
+            format!("
         INSERT INTO users VALUES ('{name}', 42);
         "),
-    )
-    .unwrap();
+        )
+        .unwrap();
 
     format!("Hello, {}! Name added to the DB ", name)
 }
+
+#[tauri::command]
+async fn open_print(handle: tauri::AppHandle){
+    let _ = tauri::WindowBuilder::new(
+        &handle,
+        "local_print",
+        tauri::WindowUrl::App("p_page.html".into()),
+    ).build().unwrap();
+}
+
 
 fn get_db_file_location() -> String {
     let file_name: String;
@@ -53,20 +63,20 @@ fn init_db_connect() {
 
     let connection = sqlite::open(&db_name).unwrap();
 
-   connection
-    .execute(
-        "
+    connection
+        .execute(
+            "
         CREATE TABLE IF NOT EXISTS users (name TEXT, age INTEGER);
         ",
-    )
-    .unwrap();
+        )
+        .unwrap();
 }
 
 fn main() {
     init_db_connect();
 
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, save_to_db])
+        .invoke_handler(tauri::generate_handler![greet, save_to_db, open_print])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

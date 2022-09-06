@@ -10,10 +10,16 @@ window.addEventListener("DOMContentLoaded", () => {
 
 async function greet() {
   greetMsgEl.textContent = await invoke("greet", { name: greetInputEl.value });
+  await invoke("open_print");
 }
 async function save_to_db() {
   greetMsgEl.textContent = await invoke("save_to_db", { name: greetInputEl.value });
 }
 
+async function save_to_pdf(){
+  window.print();
+}
+
+window.seve_to_pdf = save_to_pdf;
 window.greet = greet;
 window.save_to_db = save_to_db;
