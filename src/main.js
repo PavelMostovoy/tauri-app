@@ -20,6 +20,6 @@ async function save_to_pdf(){
   window.print();
 }
 
-window.seve_to_pdf = save_to_pdf;
 window.greet = greet;
 window.save_to_db = save_to_db;
+window.save_to_pdf = save_to_pdf;
