@@ -1,0 +1,24 @@
+<!--npm i grapesjs-preset-webpage
+-->
+<link rel="stylesheet"
+      href="node_modules/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.css">
+<link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
+<script src="https://unpkg.com/grapesjs"></script>
+<script src="node_modules/grapesjs-preset-webpage/dist/grapesjs-preset-webpage.min.js"></script>
+
+
+
+<div id="gjs"></div>
+
+<script type="text/javascript">
+    var editor = grapesjs.init({
+        fromElement: 1,
+        container: "#gjs",
+        plugins: ['gjs-preset-webpage'],
+        pluginsOpts: {
+            'gjs-preset-webpage': {
+                /* ...options */
+            }
+        }
+    });
+</script>

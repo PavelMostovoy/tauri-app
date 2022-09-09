@@ -1,0 +1,26 @@
+<!--https://github.com/artf/grapesjs#usage-->
+<link rel="stylesheet" href="https://unpkg.com/grapesjs/dist/css/grapes.min.css">
+<script src="https://unpkg.com/grapesjs"></script>
+
+<script src="https://unpkg.com/grapesjs-blocks-basic"></script>
+<script src="https://unpkg.com/grapesjs-plugin-forms"></script>
+<script src="https://unpkg.com/grapesjs-plugin-export"></script>
+
+
+<div id="gjs"></div>
+
+<script type="text/javascript">
+    var editor = grapesjs.init({
+        fromElement: 1,
+        container: "#gjs",
+        plugins: ["gjs-blocks-basic", 'grapesjs-plugin-forms', 'grapesjs-plugin-export'],
+        pluginsOpts: {
+            "gjs-blocks-basic": {
+                /* ...options */
+            },
+            "grapesjs-plugin-forms": {/* ...options */},
+            'grapesjs-plugin-export': { /* options */ }
+
+        }
+    });
+</script>
